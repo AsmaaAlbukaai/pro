@@ -9,8 +9,8 @@
 using namespace std;
 
 // عدد الخانات على اللوحة
-const int BOARD_SIZE = 52;
-const int SAFE_SPOTS[] = {0, 8, 13, 21, 26, 34, 39, 47};
+const int BOARD_SIZE = 56;
+const int SAFE_SPOTS[] = {0, 8, 13, 21, 26, 34, 39, 47, 51, 52, 53, 54, 55};
 
 // هيكل لتمثيل الحجر
 struct Piece {
@@ -49,6 +49,13 @@ void printBoard(const vector<Player> &players) {
                 cout << "[" << piece.position << "] ";
         }
         cout << endl;
+    }
+    cout << endl;
+}
+void printSafeSpots() {
+    cout << "Safe Spots: ";
+    for (int spot : SAFE_SPOTS) {
+        cout << spot << " ";
     }
     cout << endl;
 }
@@ -233,8 +240,12 @@ int main() {
     srand(static_cast<unsigned int>(time(0)));
 
     int numPlayers;
-    cout << "Enter number of players (1 for human, rest for computer): ";
+    cout << "Enter number of players (1 for human, (1-3) for computer): ";
     cin >> numPlayers;
+    while(numPlayers>4 || numPlayers<2){
+        cout<<"The number must be from 2 to 4)";
+        cin>>numPlayers;
+    }
     int numComputers = numPlayers - 1;
 
     vector<Player> players(numPlayers);
@@ -248,6 +259,7 @@ int main() {
     }
 
     cout << "Welcome to Ludo Game with AI!\n";
+    printSafeSpots();
     printBoard(players);
 
     bool gameOver = false;
