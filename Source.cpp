@@ -233,9 +233,10 @@ int expectiminimax(vector<Player> & players, int currentPlayerIndex, int depth, 
         return worstScore;
     }
 }
-bool computerMove(vector<Player>& players, int currentPlayerIndex, int diceRoll) {
+    bool computerMove(vector<Player>& players, int currentPlayerIndex, int diceRoll) {
     cout << "Computer " << currentPlayerIndex + 1 << " rolled a " << diceRoll << ".\n";
-
+    GetNextState stateGenerator; // كائن من GetNextState
+    int bestScore = numeric_limits<int>::min();
     int bestPieceIndex = -1;
     for (size_t i = 0; i < players[currentPlayerIndex].pieces.size(); i++) {
         Piece& piece = players[currentPlayerIndex].pieces[i];
@@ -245,25 +246,35 @@ bool computerMove(vector<Player>& players, int currentPlayerIndex, int diceRoll)
             (currentPosition != -1   && piece.position<=50 && currentPosition + diceRoll <= BOARD_SIZE ||
             piece.position >50 && piece.position + diceRoll == BOARD_SIZE &&
              canMoveToPosition(players, currentPlayerIndex, currentPosition, diceRoll))) {
+            vector<Player> nextPlayers = stateGenerator.getNextState(players, currentPlayerIndex, diceRoll);
+            int eval = expectiminimax(nextPlayers, currentPlayerIndex, 3, false, stateGenerator, diceRoll);
+            if (eval > bestScore) {
+            bestScore = eval;
+            bestPieceIndex = i;}
             bestPieceIndex = i;
             break;
         }
-    }
-
-
-    if (bestPieceIndex != -1) {
+        else {
+            vector<Player> nextPlayers = stateGenerator.getNextState(players, currentPlayerIndex, diceRoll);
+            int eval = expectiminimax(nextPlayers, currentPlayerIndex, 3, false, stateGenerator, diceRoll);
+            if (eval > bestScore) {
+                bestScore = eval;
+                bestPieceIndex = i;
+            }}}
+        if (bestPieceIndex != -1) {
         Piece& bestPiece = players[currentPlayerIndex].pieces[bestPieceIndex];
         if (bestPiece.position == -1 && diceRoll == 6) {
             bestPiece.position = 0;
+            cout << "Computer moved piece " << bestPieceIndex + 1 << " to position " << bestPiece.position << ".\n";
         }
-        else if(bestPiece.position != -1 && bestPiece.position + diceRoll <= BOARD_SIZE){
+        else if(bestPiece.position != -1 && bestPiece.position + diceRoll <= BOARD_SIZE) {
             bestPiece.position += diceRoll;
+            cout << "Computer moved piece " << bestPieceIndex + 1 << " to position " << bestPiece.position << ".\n";
         }
-        cout << "Computer moved piece " << bestPieceIndex + 1 << " to position " << bestPiece.position << ".\n";
         // تحقق من القتل
         return checkKill(players, currentPlayerIndex, bestPieceIndex);
     }
-    else {
+        else {
         cout << "Computer has no valid moves.\n";
         return false;
     }
