@@ -1,20 +1,20 @@
-﻿Build started 1/19/2025 5:27:46 PM.
+﻿Build started 1/22/2025 10:58:32 AM.
      1>Project "C:\Users\israa\Downloads\Documents\Visual Studio 2012\Projects\Project7\Project7\Project7.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Source.cpp
          Source.cpp
-     1>c:\users\israa\downloads\documents\visual studio 2012\projects\project7\project7\source.cpp(170): warning C4018: '>' : signed/unsigned mismatch
-     1>c:\users\israa\downloads\documents\visual studio 2012\projects\project7\project7\source.cpp(246): error C2143: syntax error : missing ')' before '{'
-     1>c:\users\israa\downloads\documents\visual studio 2012\projects\project7\project7\source.cpp(246): error C2661: 'std::vector<_Ty>::push_back' : no overloaded function takes 0 arguments
+     1>c:\users\israa\downloads\documents\visual studio 2012\projects\project7\project7\source.cpp(266): warning C4018: '>' : signed/unsigned mismatch
+     1>c:\users\israa\downloads\documents\visual studio 2012\projects\project7\project7\source.cpp(303): error C2143: syntax error : missing ')' before '{'
+     1>c:\users\israa\downloads\documents\visual studio 2012\projects\project7\project7\source.cpp(303): error C2661: 'std::vector<_Ty>::push_back' : no overloaded function takes 0 arguments
                  with
                  [
                      _Ty=Piece
                  ]
-     1>c:\users\israa\downloads\documents\visual studio 2012\projects\project7\project7\source.cpp(246): error C2143: syntax error : missing ';' before '{'
-     1>c:\users\israa\downloads\documents\visual studio 2012\projects\project7\project7\source.cpp(246): error C2143: syntax error : missing ';' before '}'
-     1>c:\users\israa\downloads\documents\visual studio 2012\projects\project7\project7\source.cpp(246): error C2059: syntax error : ')'
+     1>c:\users\israa\downloads\documents\visual studio 2012\projects\project7\project7\source.cpp(303): error C2143: syntax error : missing ';' before '{'
+     1>c:\users\israa\downloads\documents\visual studio 2012\projects\project7\project7\source.cpp(303): error C2143: syntax error : missing ';' before '}'
+     1>c:\users\israa\downloads\documents\visual studio 2012\projects\project7\project7\source.cpp(303): error C2059: syntax error : ')'
      1>Done Building Project "C:\Users\israa\Downloads\Documents\Visual Studio 2012\Projects\Project7\Project7\Project7.vcxproj" (Build target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:23.35
+Time Elapsed 00:00:15.00
